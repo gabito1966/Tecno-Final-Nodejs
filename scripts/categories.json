@@ -1,0 +1,22 @@
+[
+    {
+        "categoryId": 1,
+        "name": "computadoras"
+    },
+    {
+        "categoryId": 2,
+        "name": "perifericos"
+    },
+    {
+        "categoryId": 3,
+        "name": "electronicos"
+    },
+    {
+        "categoryId": 4,
+        "name": "impresoras"
+    },
+    {
+        "categoryId": 5,
+        "name": "hardware"
+    }
+]

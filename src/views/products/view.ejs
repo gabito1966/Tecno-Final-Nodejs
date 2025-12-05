@@ -1,0 +1,41 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div class="bg-white shadow rounded overflow-hidden flex flex-col h-full relative">
+        <div class="overflow-hidden">
+            <img src="<%= product.image || '/placeholder.png' %>" alt="<%= product.name %>"
+                class="w-full h-96 object-cover">
+        </div>
+
+        <div class="p-4 flex-1">
+            <h2 class="text-xl font-bold mb-2">
+                <%= product.name %>
+            </h2>
+            <p class="text-gray-600 mb-2">
+                <%= product.description %>
+            </p>
+            <p class="font-semibold mb-2">$<%= Number(product.price).toFixed(2) %>
+            </p>
+            <p class="text-gray-500">Categoría:
+                <strong>
+                    <%= product.category || 'Sin categoría' %>
+                </strong>
+            </p>
+        </div>
+
+        <div class="flex justify-between px-6 mb-[15px]">
+            <a href="/products/view/<%= product.productId %>"
+                class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg">Ver</a>
+
+            <a href="/products/edit/<%= product.productId %>"
+                class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg">Editar</a>
+
+            <form action="/products/delete/<%= product.productId %>?_method=DELETE" method="POST"
+                onsubmit="return confirm('¿Eliminar producto?')">
+                <button class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">Eliminar</button>
+            </form>
+
+            <a href="/products/view" class="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-lg">
+                Volver
+            </a>
+        </div>
+    </div>
+</div>

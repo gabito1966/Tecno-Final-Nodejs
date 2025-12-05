@@ -1,0 +1,963 @@
+[
+    {
+        "productId": 1,
+        "image": "/images/CoolerFan1.jpg",
+        "name": "Cooler Fan Aigo",
+        "description": "Cooler para Procesador Aigo DarkFlash Darkvoid",
+        "price": 6.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 2,
+        "image": "/images/CoolerFan2.jpg",
+        "name": "Cooler Fan Aigo",
+        "description": "Cooler para Gabinete Aigo DR12 RGB",
+        "price": 3.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 3,
+        "image": "/images/CoolerFan3.jpg",
+        "name": "Cooler Fan Aigo",
+        "description": "Cooler para Gabinete darkFlash CF8 Pro ARGB",
+        "price": 6.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 4,
+        "image": "/images/CoolerFan4.jpg",
+        "name": "Cooler Fan Aigo",
+        "description": "Cooler para Gabinete DarkFlash D1",
+        "price": 4.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 5,
+        "image": "/images/CoolerNB1.jpg",
+        "name": "Cooler NB Redragon",
+        "description": "Cooler para Notebook Ingrid",
+        "price": 27.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 6,
+        "image": "/images/CoolerNB2.jpg",
+        "name": "Cooler NB Satellite",
+        "description": "Cooler para Notebook A-CP19",
+        "price": 6.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 7,
+        "image": "/images/CoolerNB3.jpg",
+        "name": "Cooler NB Satellite",
+        "description": "Cooler para Notebook A-CP20",
+        "price": 7.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 8,
+        "image": "/images/Drone1.jpg",
+        "name": "Drone DJI",
+        "description": "Air 3S Fly RC2 Pantalla",
+        "price": 1699.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 9,
+        "image": "/images/Drone2.jpg",
+        "name": "Drone DJI",
+        "description": "Flip RC 2 GL Pantalla",
+        "price": 639.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 10,
+        "image": "/images/Drone3.jpg",
+        "name": "Drone DJI",
+        "description": "Mini 3 (GL)",
+        "price": 485.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 11,
+        "image": "/images/Drone4.jpg",
+        "name": "Drone DJI",
+        "description": "Mini 4 Pro Fly More RC2 3Bat Pantalla",
+        "price": 1159.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 12,
+        "image": "/images/Fuente1.jpg",
+        "name": "Fuente Redragon",
+        "description": "ATX 850W 80 Plus Gold PFC",
+        "price": 115.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 13,
+        "image": "/images/Fuente2.jpg",
+        "name": "Fuente Redragon",
+        "description": "ATX 850W 80 Plus Gold PFC",
+        "price": 115.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 14,
+        "image": "/images/Fuente3.jpg",
+        "name": "Fuente Gigabyte",
+        "description": "Ice ATX 550W 80 Plus Silver",
+        "price": 46.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 15,
+        "image": "/images/Fuente4.jpg",
+        "name": "Fuente Gigabyte",
+        "description": "ATX 850W 80 Plus Gold",
+        "price": 107.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 16,
+        "image": "/images/Teclado1.jpg",
+        "name": "Teclado Logitech",
+        "description": "MX Mechanical Inalámbrico",
+        "price": 132.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 17,
+        "image": "/images/Teclado2.jpg",
+        "name": "Teclado Logitech",
+        "description": "Pebble Keys 2 Inalámbrico",
+        "price": 26.50,
+        "category": "perifericos"
+    },
+    {
+        "productId": 18,
+        "image": "/images/Teclado3.jpg",
+        "name": "Teclado Redragon",
+        "description": "K515RGB PRO SHIVA 98",
+        "price": 27.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 19,
+        "image": "/images/Teclado4.jpg",
+        "name": "Teclado Redragon",
+        "description": "K550-RGB-1 YAMA",
+        "price": 58.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 20,
+        "image": "/images/Teclado5.jpg",
+        "name": "Teclado Redragon",
+        "description": "K656WGB RGB PRO GAREN",
+        "price": 56.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 21,
+        "image": "/images/Teclado6.jpg",
+        "name": "Teclado Redragon",
+        "description": "K722 RGB IRONGUARD",
+        "price": 29.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 22,
+        "image": "/images/Webcam1.jpg",
+        "name": "Webcam Logitech",
+        "description": "C920E Business Full HD 30 FPS Micrófono",
+        "price": 55.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 23,
+        "image": "/images/Webcam2.jpg",
+        "name": "Webcam Redragon",
+        "description": "Skywalker Fobos HD 30 FPS Micrófono",
+        "price": 29.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 24,
+        "image": "/images/Webcam3.jpg",
+        "name": "Webcam Redragon",
+        "description": "Apex Full HD 30 FPS Micrófono",
+        "price": 53.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 25,
+        "image": "/images/SSD1.jpg",
+        "name": "SSD Corsair",
+        "description": "Force XT Hydro X Edition 4TB NVMe",
+        "price": 388.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 26,
+        "image": "/images/SSD2.jpg",
+        "name": "SSD Keepdata",
+        "description": "SSD Keepdata 128GB 2.5 SATA 3",
+        "price": 9.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 27,
+        "image": "/images/SSD3.jpg",
+        "name": "SSD Kingston",
+        "description": "M.2 NV3 1TB NVMe PCIe 4.0",
+        "price": 52.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 28,
+        "image": "/images/SSD4.jpg",
+        "name": "SSD Kingston",
+        "description": "KC600 256GB 2.5 SATA 3",
+        "price": 29.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 29,
+        "image": "/images/SSD5.jpg",
+        "name": "SSD Patriot",
+        "description": "M.2 Viper 4TB NVMe PCIe Gen 5",
+        "price": 597.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 30,
+        "image": "/images/SSD6.jpg",
+        "name": "SSD Scandisk",
+        "description": "Externo Portátil Extreme 8TB USB-C",
+        "price": 519.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 31,
+        "image": "/images/SSD7.jpg",
+        "name": "SSD UpGamer",
+        "description": "2.5 1TB UP GAMER UP500 SATA3",
+        "price": 46.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 32,
+        "image": "/images/SSD8.jpg",
+        "name": "SSD Western Digital",
+        "description": "Ext 1TB My Passport USB-C",
+        "price": 149.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 33,
+        "image": "/images/SSD9.jpg",
+        "name": "SSD Western Digital",
+        "description": "Ext 500GB My Passport USB‑C + USB‑A",
+        "stock": 40,
+        "category": "hardware"
+    },
+    {
+        "productId": 34,
+        "image": "/images/SSD10.jpg",
+        "name": "SSD Western Digital",
+        "description": "Ext 2TB My Passport USB‑C + USB‑A",
+        "price": 146.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 35,
+        "image": "/images/Procesador1.jpg",
+        "name": "Procesador AMD",
+        "description": "Ryzen 9 9950X3D AM5 16 Core 32 Cache 144MB",
+        "price": 718.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 36,
+        "image": "/images/Procesador2.jpg",
+        "name": "Procesador AMD",
+        "description": "Ryzen 9 9900X3D AMD AM5 12 Core 24 Threads Cache 128MB",
+        "price": 628.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 37,
+        "image": "/images/Procesador3.jpg",
+        "name": "Procesador AMD",
+        "description": "Ryzen 5 8400F Socket AM5 6 Core 12 Threads Cache 22MB",
+        "price": 140.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 38,
+        "image": "/images/Procesador4.jpg",
+        "name": "Procesador Intel",
+        "description": "Core Ultra 9 Socket LGA Core 24 Threads Cache 36MB",
+        "price": 585.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 39,
+        "image": "/images/Procesador5.jpg",
+        "name": "Procesador Intel",
+        "description": "Core i9-14900KS Socket LGA 1700 24 Core 32 Threads Cache 36MB",
+        "price": 650.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 40,
+        "image": "/images/PlacaVideo1.jpg",
+        "name": "Placa Video Asus",
+        "description": "Dual OC NVIDIA GeForce RTX-5060TI 8GB GDDR7",
+        "price": 476.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 41,
+        "image": "/images/PlacaVideo2.jpg",
+        "name": "Placa Video Asus",
+        "description": "Prime NVIDIA GeForce RTX 5060 8GB GDDR7",
+        "price": 386.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 42,
+        "image": "/images/PlacaVideo3.jpg",
+        "name": "Placa Video Palit",
+        "description": "GameRock GeForce RTX 5090 32GB GDDR7",
+        "price": 2640.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 43,
+        "image": "/images/PlacaVideo4.jpg",
+        "name": "Placa Video Gigabyte",
+        "description": "NVIDIA GeForce RTX 5090 OC 32GB GDDR7",
+        "price": 2920.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 44,
+        "image": "/images/PlacaVideo5.jpg",
+        "name": "Placa Video Sapphire",
+        "description": "Pulse OC Radeon RX‑9060XT 8GB GDDR6",
+        "price": 395.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 45,
+        "image": "/images/PastaTermica1.jpg",
+        "name": "Pasta Termica Aigo",
+        "description": "ZER‑07 3.0W/M‑K 1G ‒ Dorado",
+        "price": 2.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 46,
+        "image": "/images/PastaTermica2.jpg",
+        "name": "Pasta Termica Corsair",
+        "description": "XTM60 PERFORMANCE CT‑9010015‑WW",
+        "price": 11.40,
+        "category": "hardware"
+    },
+    {
+        "productId": 47,
+        "image": "/images/PastaTermica3.jpg",
+        "name": "Pasta Termica Aigo",
+        "description": "DarkFlash DP7 1G 14.0w/mK",
+        "price": 4.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 48,
+        "image": "/images/Gabinete1.jpg",
+        "name": "Gabinete Aigo DarkFlash",
+        "description": "DK151 RGB Mid Tower",
+        "price": 39.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 49,
+        "image": "/images/Gabinete2.jpg",
+        "name": "Gabinete Aigo DarkFlash",
+        "description": "DK352 Plus 4 Fans ARGB",
+        "price": 44.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 50,
+        "image": "/images/Gabinete3.jpg",
+        "name": "Gabinete Redragon",
+        "description": "Devastator GC‑550 Mid Tower RGB",
+        "price": 69.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 51,
+        "image": "/images/Gabinete4.jpg",
+        "name": "Gabinete Aigo DarkFlash",
+        "description": "FT418 Pro Mid Tower 7 Fans",
+        "price": 79.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 52,
+        "image": "/images/GrabadoraLaser1.jpg",
+        "name": "Grabadora Creality",
+        "description": "CV 01 Pro",
+        "price": 279.90,
+        "category": "impresoras"
+    },
+    {
+        "productId": 53,
+        "image": "/images/GrabadoraLaser2.jpg",
+        "name": "Grabadora Creality",
+        "description": "Falcon 2 Pro 22W",
+        "price": 229.90,
+        "category": "impresoras"
+    },
+    {
+        "productId": 54,
+        "image": "/images/HD1.jpg",
+        "name": "Hard Disk Seagate",
+        "description": "Exos 28TB 3.5 SATA 3 7200RPM",
+        "price": 339.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 55,
+        "image": "/images/HD2.jpg",
+        "name": "Hard Disk Seagate",
+        "description": "Exos X24 24TB 3.5 SATA 7200RPM",
+        "price": 468.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 56,
+        "image": "/images/HD3.jpg",
+        "name": "Hard Disk Western Digital",
+        "description": "Purple Pro 18TB 3.5 SATA 3",
+        "price": 336.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 57,
+        "image": "/images/Headset1.jpg",
+        "name": "Headset Corsair",
+        "description": "Virtuoso Pro Inalámbrico USB‑C",
+        "price": 166.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 58,
+        "image": "/images/Headset2.jpg",
+        "name": "Headset Logitech",
+        "description": "Astro A30 939‑002007 Wireless",
+        "price": 195.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 59,
+        "image": "/images/Headset3.jpg",
+        "name": "Headset Logitech",
+        "description": "G335 con Cable",
+        "price": 39.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 60,
+        "image": "/images/Headset4.jpg",
+        "name": "Headset Logitech",
+        "description": "G733 981‑000863 Wireless",
+        "price": 124.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 61,
+        "image": "/images/Headset5.jpg",
+        "name": "Headset Redragon",
+        "description": "Ares H120 RGB P2 + Adaptador 3.5mm",
+        "price": 13.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 62,
+        "image": "/images/Headset6.jpg",
+        "name": "Headset Redragon",
+        "description": "Zeus X H510‑RGB USB",
+        "price": 49.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 63,
+        "image": "/images/Headset7.jpg",
+        "name": "Headset Sades",
+        "description": "Knight PRO PC",
+        "price": 39.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 64,
+        "image": "/images/Impresora1.jpg",
+        "name": "Impresora Brother",
+        "description": "Monocromática HL‑1200 220V",
+        "price": 65.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 65,
+        "image": "/images/Impresora2.jpg",
+        "name": "Impresora Brother",
+        "description": "Laser Mono DCP‑L2540DW WiFi",
+        "price": 280.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 66,
+        "image": "/images/Impresora3.jpg",
+        "name": "Impresora Brother",
+        "description": "DCP‑T420W 3 en 1 WiFi",
+        "price": 79.90,
+        "category": "impresoras"
+    },
+    {
+        "productId": 67,
+        "image": "/images/Impresora4.jpg",
+        "name": "Impresora Epson",
+        "description": "Fotográfica EcoTank L8050 WiFi",
+        "price": 352.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 68,
+        "image": "/images/Impresora5.jpg",
+        "name": "Impresora Epson",
+        "description": "EcoTank L3560 WiFi",
+        "price": 222.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 69,
+        "image": "/images/Impresora6.jpg",
+        "name": "Impresora Epson",
+        "description": "L3250 Ecotank WiFi",
+        "price": 207.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 70,
+        "image": "/images/Impresora7.jpg",
+        "name": "Impresora Epson",
+        "description": "L5590 Ecotank WiFi",
+        "price": 294.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 71,
+        "image": "/images/Impresora8.jpg",
+        "name": "Impresora Epson",
+        "description": "Sublimación SureColor F170 WiFi",
+        "price": 320.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 72,
+        "image": "/images/Impresora9.jpg",
+        "name": "Impresora Epson",
+        "description": "EcoTank L6270 3 en 1 WiFi",
+        "price": 269.90,
+        "category": "impresoras"
+    },
+    {
+        "productId": 73,
+        "image": "/images/Impresora10.jpg",
+        "name": "Impresora HP",
+        "description": "Smart Tank 580 WiFi",
+        "price": 160.00,
+        "category": "impresoras"
+    },
+    {
+        "productId": 74,
+        "image": "/images/Impresora11.jpg",
+        "name": "Impresora HP",
+        "description": "DeskJet Ink Advantage 2875 WiFi",
+        "price": 229.90,
+        "category": "impresoras"
+    },
+    {
+        "productId": 75,
+        "image": "/images/Memoria1.jpg",
+        "name": "Memoria RAM Adata",
+        "description": "XPG Spectrix D35G RGB 16GB DDR4 3200MHz",
+        "price": 43.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 76,
+        "image": "/images/Memoria2.jpg",
+        "name": "Memoria RAM Corsair",
+        "description": "Vengeance RGB 16GB DDR5 6000MHz",
+        "price": 57.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 77,
+        "image": "/images/Memoria3.jpg",
+        "name": "Memoria RAM Corsair",
+        "description": "Vengeance RGB 32GB (2x16GB) DDR5 6400MHz",
+        "price": 120.20,
+        "category": "hardware"
+    },
+    {
+        "productId": 78,
+        "image": "/images/Memoria4.jpg",
+        "name": "Memoria RAM Patriot",
+        "description": "Signature 4GB DDR4 2666MHZ para Notebook",
+        "price": 8.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 79,
+        "image": "/images/Memoria5.jpg",
+        "name": "Memoria RAM Patriot",
+        "description": "Viper Elite 5 48GB (2x24GB) DDR5 6000 MHz",
+        "price": 143.50,
+        "category": "hardware"
+    },
+    {
+        "productId": 80,
+        "image": "/images/Memoria6.jpg",
+        "name": "Memoria RAM Patriot",
+        "description": "Viper Elite 5R Ultra RGB 48GB (2x24GB) DDR5 8000 MHz",
+        "price": 179.90,
+        "category": "hardware"
+    },
+    {
+        "productId": 81,
+        "image": "/images/Memoria7.jpg",
+        "name": "Memoria RAM Kingston",
+        "description": "DDR5 32GB 6400 Fury Beast Black RGB",
+        "price": 125.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 82,
+        "image": "/images/MiniPC1.jpg",
+        "name": "Mini PC Blackview",
+        "description": "MP60 Intel N95 1TB SSD 16GB RAM",
+        "price": 195.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 83,
+        "image": "/images/MiniPC2.jpg",
+        "name": "Mini PC Beelink",
+        "description": "GTi13 Ultra Intel Core i9-13900HK 2TB SSD 64GB",
+        "price": 745.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 84,
+        "image": "/images/MiniPC3.jpg",
+        "name": "Mini PC Beelink",
+        "description": "GTI14 Ultra Intel Core i7 155H 1TB SSD 32GB",
+        "price": 775.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 85,
+        "image": "/images/MiniPC4.jpg",
+        "name": "Mini PC Apple Mac",
+        "description": "Mini 2024 MCYT4LL/A M4 512GB SSD 24GB",
+        "price": 1150.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 86,
+        "image": "/images/Monitor1.jpg",
+        "name": "Monitor LG",
+        "description": "27MQ400-B 27inch Full HD 75Hz HDMI",
+        "price": 139.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 87,
+        "image": "/images/Monitor2.jpg",
+        "name": "Monitor LG",
+        "description": "34WN780B 34inch WQHD UltraWide 75Hz LED",
+        "price": 586.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 88,
+        "image": "/images/Monitor3.jpg",
+        "name": "Monitor MSI",
+        "description": "MAG 242C 24inch Curvo 180Hz HDMI DP",
+        "price": 162.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 89,
+        "image": "/images/Monitor4.jpg",
+        "name": "Monitor MSI",
+        "description": "MAG 346CQ 34 inch UWQHD Curvo 180Hz HDMI DP",
+        "price": 360.00,
+        "stock": 15,
+        "category": "electronicos"
+    },
+    {
+        "productId": 90,
+        "image": "/images/Monitor5.jpg",
+        "name": "Monitor Mtek",
+        "description": "M24SFV165C 24inch Full HD 165Hz Curvo",
+        "price": 118.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 91,
+        "image": "/images/Monitor6.jpg",
+        "name": "Monitor Samsung",
+        "description": "32 inch S7 VIEWFINITY UHD 4K 5MS/60H",
+        "price": 425.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 92,
+        "image": "/images/Monitor7.jpg",
+        "name": "Monitor Samsung",
+        "description": "32 inch CURVED FHD 4MPS/100HZ/VGA/HDMI",
+        "price": 205.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 93,
+        "image": "/images/Monitor8.jpg",
+        "name": "Monitor Samsung",
+        "description": "27 inch ODYSSEY G6 CURVED QHD 1MS/165HZ",
+        "price": 395.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 94,
+        "image": "/images/Monitor9.jpg",
+        "name": "Monitor Viewsonic",
+        "description": "VA2714-H 27 inch Full HD 100Hz HDMI IPS",
+        "price": 120.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 95,
+        "image": "/images/Monitor10.jpg",
+        "name": "Monitor Xiaomi",
+        "description": "A27QI ELA5814US 27 inch 2K Quad HD 100Hz HDMI DP",
+        "price": 138.00,
+        "category": "electronicos"
+    },
+    {
+        "productId": 96,
+        "image": "/images/Mother1.jpg",
+        "name": "Mother Asus",
+        "description": "Rog Strix Z790-F Socket LGA 1700 Chipset Intel Z790 DDR5 ATX",
+        "price": 379.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 97,
+        "image": "/images/Mother2.jpg",
+        "name": "Mother Asus",
+        "description": "Tuf Gaming X670E Plus Socket AM5 Chipset AMD X670 DDR5 ATX",
+        "price": 670.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 98,
+        "image": "/images/Mother3.jpg",
+        "name": "Mother Gigabyte",
+        "description": "Z890 Aorus Pro Ice DDR5 Socket 1851 Chipset Z890 ATX",
+        "price": 390.00,
+        "category": "hardware"
+    },
+    {
+        "productId": 99,
+        "image": "/images/Mouse1.jpg",
+        "name": "Mouse Logitech",
+        "description": "Lift Left Vertical 910-006467 4000 DPI Inalámbrico",
+        "price": 52.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 100,
+        "image": "/images/Mouse2.jpg",
+        "name": "Mouse Logitech",
+        "description": "MX Master 3S sin Cable 8000 DPI-Blanco",
+        "price": 73.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 101,
+        "image": "/images/Mouse3.jpg",
+        "name": "Mouse Razer",
+        "description": "Basilisk V3 35K con Cable",
+        "price": 72.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 102,
+        "image": "/images/Mouse4.jpg",
+        "name": "Mouse Redragon",
+        "description": "Woki M994 Super-Light 26000 DPI Bluetooth",
+        "price": 34.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 103,
+        "image": "/images/Mouse5.jpg",
+        "name": "Mouse Redragon",
+        "description": "RIND M813 PRO RGB 26000 DPI Inalámbrico",
+        "price": 37.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 104,
+        "image": "/images/Mouse6.jpg",
+        "name": "Mouse Redragon",
+        "description": "M991 Enlightment Inalámbrico",
+        "price": 34.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 105,
+        "image": "/images/Mouse7.jpg",
+        "name": "Mouse Apple",
+        "description": "Magic MXK53ZA/A Multi‑Touch USB‑C",
+        "price": 75.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 106,
+        "image": "/images/Mouse8.jpg",
+        "name": "Mouse Apple",
+        "description": "Magic MXK63AM/A Multi‑Touch USB‑C",
+        "price": 105.00,
+        "category": "perifericos"
+    },
+    {
+        "productId": 107,
+        "image": "/images/Notebook1.jpg",
+        "name": "Notebook Acer",
+        "description": "PREDATOR ULTRA9‑185H 32GB 1Tb 14inch RTX4070",
+        "price": 1733.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 108,
+        "image": "/images/Notebook2.jpg",
+        "name": "Notebook Acer",
+        "description": "Aspire Vero Intel Core Ultra 7‑155U 512GB 16GB",
+        "price": 595.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 109,
+        "image": "/images/Notebook3.jpg",
+        "name": "Notebook Dell",
+        "description": "Inspiron 16 7640 16inch Intel Ultra 9 185H 512GB 16GB Touch",
+        "price": 930.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 110,
+        "image": "/images/Notebook4.jpg",
+        "name": "Notebook Dell",
+        "description": "XPS 15 15.6inch Intel Core i7‑13700H 256GB 16GB Intel Arc A370M",
+        "price": 1395.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 111,
+        "image": "/images/Notebook5.jpg",
+        "name": "Notebook HP",
+        "description": "ULTRA7-255H 32GB 1TB 14inch 3K W11 RTX5060",
+        "price": 1890.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 112,
+        "image": "/images/Notebook6.jpg",
+        "name": "Notebook HP",
+        "description": "I7-14700HX 16GB 1TB 16 FHD W11 RTX4070 8GB",
+        "price": 1357.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 113,
+        "image": "/images/Notebook7.jpg",
+        "name": "Notebook Apple",
+        "description": "MacBook Pro 2024 16.2inch Chip M4 Max 1TB 48GB",
+        "price": 4000.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 114,
+        "image": "/images/Notebook8.jpg",
+        "name": "Notebook Apple",
+        "description": "Macbook Air 2024 15inch Chip M3 512GB 24GB",
+        "price": 1438.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 115,
+        "image": "/images/Notebook9.jpg",
+        "name": "Notebook Lenovo",
+        "description": "R7-8845HS 16GB 1TB 15.6inch FHD W11 RTX4060 8GB",
+        "price": 1050.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 116,
+        "image": "/images/Notebook10.jpg",
+        "name": "Notebook Samsung",
+        "description": "Galaxy Book4 15.6inch Intel Core i7‑1355U 512GB SSD 16GB",
+        "price": 750.00,
+        "category": "computadoras"
+    },
+    {
+        "productId": 117,
+        "image": "/images/Parlante1.jpg",
+        "name": "Parlante Redragon",
+        "description": "Anvil GS520 Pro RGB USB 3.5mm",
+        "price": 63.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 118,
+        "image": "/images/Parlante2.jpg",
+        "name": "Parlante Redragon",
+        "description": "Anvil RGB 3.5mm USB",
+        "price": 30.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 119,
+        "image": "/images/Parlante3.jpg",
+        "name": "Parlante Redragon",
+        "description": "Toccata GS700 RGB P2 USB Auxiliar",
+        "price": 39.90,
+        "category": "perifericos"
+    },
+    {
+        "productId": 120,
+        "image": "/images/Parlante4.jpg",
+        "name": "Parlante Redragon",
+        "description": "Anvil GS520 USB P2 Auxiliar RGB",
+        "price": 30.90,
+        "category": "perifericos"
+    }
+]

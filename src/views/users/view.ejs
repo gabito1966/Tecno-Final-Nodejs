@@ -1,0 +1,47 @@
+<div class="max-w-2xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
+
+    <h1 class="text-2xl font-bold mb-4">
+        Usuario: <%= user.name %>
+    </h1>
+
+    <p><strong>ID:</strong>
+        <%= user.id %>
+    </p>
+
+    <p><strong>Nombre:</strong>
+        <%= user.name %>
+    </p>
+
+    <p><strong>Email:</strong>
+        <%= user.email %>
+    </p>
+
+    <p><strong>Rol:</strong>
+        <%= user.role %>
+    </p>
+
+    <p><strong>Fecha de creación:</strong>
+        <% if (user.createdAt) { %>
+            <%= new Date( user.createdAt.toDate ? user.createdAt.toDate() : user.createdAt ).toLocaleDateString() %>
+                <% } else { %>
+                    -
+                    <% } %>
+    </p>
+
+    <div class="mt-6 flex gap-4">
+        <a href="/users/edit/<%= user.id %>" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+            Editar
+        </a>
+
+        <form action="/users/<%= user.id %>?_method=DELETE" method="POST"
+            onsubmit="return confirm('¿Eliminar usuario?')">
+            <button class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
+                Eliminar
+            </button>
+        </form>
+
+        <a href="/users/view" class="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-lg">
+            Volver
+        </a>
+    </div>
+</div>

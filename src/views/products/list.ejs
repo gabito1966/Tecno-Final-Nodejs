@@ -1,0 +1,90 @@
+<div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold">Productos</h1>
+    <a href="/products/create" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg shadow">
+        Crear producto
+    </a>
+</div>
+
+<!-- FILTROS -->
+<form method="GET" class="bg-white p-4 shadow rounded mb-6 flex flex-col md:flex-row gap-4">
+    <input type="text" name="search" value="<%= search || '' %>" placeholder="Buscar por nombre..."
+        class="border px-3 py-2 rounded w-full md:w-1/2">
+    <select name="category" class="border px-3 py-2 rounded w-full md:w-1/2">
+        <option value="">Todas las categorías</option>
+        <% categorias.forEach(cat=> { %>
+            <option value="<%= cat.name %>" <%=cat.name===category ? "selected" : "" %>>
+                <%= cat.name %>
+            </option>
+            <% }) %>
+    </select>
+    <button type="submit" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded">
+        Filtrar
+    </button>
+</form>
+
+<!-- GRID DE PRODUCTOS -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <% products.forEach(product=> { %>
+        <div class="bg-white shadow rounded overflow-hidden flex flex-col h-full relative">
+            <div class="overflow-hidden">
+                <img src="<%= product.image %>" class="w-4/5 mx-auto object-cover">
+            </div>
+            <div class="p-4 flex-1">
+                <h2 class="text-xl font-bold mb-2">
+                    <%= product.name %>
+                </h2>
+                <p class="text-gray-600 mb-2">
+                    ID: <%= product.productId %>
+                </p>
+                <p class="text-gray-600 mb-2">
+                    <%= product.description %>
+                </p>
+                <p class="font-semibold mb-2">
+                    $<%= Number(product.price).toFixed(2) %>
+                </p>
+                <p class="text-gray-500">
+                    Categoría:
+                    <strong>
+                        <%= product.category || 'Sin categoría' %>
+                    </strong>
+                </p>
+            </div>
+            <div class="flex justify-between px-6 mb-[15px]">
+                <a href="/products/view/<%= product.productId %>"
+                    class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg">
+                    Ver
+                </a>
+                <form action="/products/delete/<%= product.productId %>?_method=DELETE" method="POST"
+                    onsubmit="return confirm('¿Eliminar producto?')">
+                    <button class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
+                        Eliminar
+                    </button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+</div>
+
+<!-- PAGINACIÓN -->
+<div class="flex justify-center mt-8 space-x-2">
+    <% if (currentPage> 1) { %>
+        <a href="?page=<%= currentPage - 1 %><%= category ? '&category=' + category : '' %><%= search ? '&search=' + search : '' %>"
+            class="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300">
+            Anterior
+        </a>
+        <% } %>
+
+            <% for (let i=1; i <=totalPages; i++) { %>
+                <a href="?page=<%= i %><%= category ? '&category=' + category : '' %><%= search ? '&search=' + search : '' %>"
+                    class="px-3 py-2 rounded <%= i === currentPage ? 'bg-blue-600 text-white' : 'bg-gray-200 hover:bg-gray-300' %>">
+                    <%= i %>
+                </a>
+                <% } %>
+
+                    <% if (currentPage < totalPages) { %>
+                        <a href="?page=<%= currentPage + 1 %><%= category ? '&category=' + category : '' %><%= search ? '&search=' + search : '' %>"
+                            class="px-3 py-2 bg-gray-200 rounded hover:bg-gray-300">
+                            Siguiente
+                        </a>
+                        <% } %>
+</div>

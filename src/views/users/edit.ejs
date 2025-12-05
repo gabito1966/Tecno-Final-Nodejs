@@ -1,0 +1,39 @@
+<div class="max-w-2xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
+
+    <h1 class="text-2xl font-bold mb-6">Editar usuario</h1>
+
+    <form action="/users/edit/<%= user.id %>" method="POST" class="space-y-4">
+
+        <!-- Nombre -->
+        <div>
+            <label class="block font-semibold mb-1">Nombre</label>
+            <input type="text" name="name" value="<%= user.name %>" class="w-full border rounded-lg px-3 py-2" required>
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label class="block font-semibold mb-1">Email</label>
+            <input type="email" name="email" value="<%= user.email %>" class="w-full border rounded-lg px-3 py-2"
+                required>
+        </div>
+
+        <!-- Rol -->
+        <div>
+            <label class="block font-semibold mb-1">Rol</label>
+            <select name="role" class="w-full border rounded-lg px-3 py-2" required>
+                <option value="admin" <%=user.role==='admin' ? 'selected' : '' %>>admin</option>
+                <option value="user" <%=user.role==='user' ? 'selected' : '' %>>user</option>
+            </select>
+        </div>
+
+        <div class="flex gap-4 mt-6">
+            <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+                Guardar cambios
+            </button>
+
+            <a href="/users/view/<%= user.id %>" class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg">
+                Cancelar
+            </a>
+        </div>
+    </form>
+</div>

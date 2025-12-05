@@ -1,0 +1,35 @@
+{
+  "name": "tecno-final-nodejs",
+  "version": "1.0.0",
+  "description": "App de gestion de productos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "Gabriel Garcia",
+  "license": "ISC",
+  "type": "module",
+  "experimentalJsonModules": true,
+  "dependencies": {
+    "@dataconnect/admin-generated": "file:src/dataconnect-admin-generated",
+    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "@tailwindcss/vite": "^4.1.17",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "firebase": "^12.6.0",
+    "firebase-admin": "^13.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
+    "node-fetch": "^3.3.2",
+    "tailwindcss": "^4.1.17"
+  }
+}

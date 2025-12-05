@@ -1,0 +1,57 @@
+<nav class="bg-white shadow p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <div>
+            <img src="/images/logo_tecno.jpg" alt="logo" class="h-12">
+        </div>
+
+        <!-- Menú para desktop -->
+        <ul class="hidden md:flex gap-4 items-center">
+            <% if (user) { %>
+                <li><a href="/products/view"
+                        class="px-4 py-2 bg-sky-500 hover:bg-sky-700 text-white rounded-lg">Productos</a></li>
+                <li><a href="/users/view"
+                        class="px-4 py-2 bg-sky-600 hover:bg-sky-800 text-white rounded-lg">Usuarios</a></li>
+                <li><span class="text-gray-700"><strong> Hola, <%= user.name %></strong> </span></li>
+                <li><a href="/auth/logout"
+                        class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg">Logout</a>
+                </li>
+                <% } else { %>
+                    <li><a href="/auth/login"
+                            class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg">Login</a></li>
+                    <li><a href="/auth/register"
+                            class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg">Registrarse</a></li>
+                    <% } %>
+        </ul>
+
+        <!-- Botón hamburguesa para móvil -->
+        <div class="md:hidden">
+            <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Menú móvil oculto por defecto -->
+    <ul id="mobile-menu" class="hidden md:hidden flex-col gap-2 p-4">
+        <% if (user) { %>
+            <li><a href="/products/view" class="block text-blue-600 hover:underline">Productos</a></li>
+            <li><span class="block text-gray-700">Hola, <%= user.name %></span></li>
+            <li><a href="/auth/logout" class="block text-red-600 hover:underline">Logout</a></li>
+            <% } else { %>
+                <li><a href="/auth/login" class="block text-blue-600 hover:underline">Login</a></li>
+                <li><a href="/auth/register" class="block text-green-600 hover:underline">Registrarse</a></li>
+                <% } %>
+    </ul>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</nav>

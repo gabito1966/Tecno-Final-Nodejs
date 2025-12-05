@@ -1,0 +1,90 @@
+<div class="max-w-3xl mx-auto mt-10 bg-white shadow rounded-lg p-6">
+
+    <h1 class="text-3xl font-bold mb-6">
+        <%= product && product.productId ? "Editar Producto" : "Crear Producto" %>
+    </h1>
+
+    <!-- Mensajes de error o éxito -->
+    <% if (error) { %>
+        <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+            <%= error %>
+        </div>
+        <% } %>
+            <% if (success) { %>
+                <div class="bg-green-100 text-green-700 px-4 py-2 rounded mb-4">
+                    <%= success %>
+                </div>
+                <% } %>
+
+                    <!-- Formulario -->
+                    <form method="POST"
+                        action="<%= product.productId ? '/products/edit/' + product.productId : '/products/create' %>"
+                        enctype="multipart/form-data">
+
+
+                        <!-- Nombre -->
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1" for="name">Nombre</label>
+                            <input type="text" id="name" name="name" value="<%= product.name || '' %>"
+                                class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:ring-sky-300"
+                                required>
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1" for="description">Descripción</label>
+                            <textarea id="description" name="description" rows="4"
+                                class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:ring-sky-300"
+                                required><%= product.description || '' %></textarea>
+                        </div>
+
+                        <!-- Precio -->
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1" for="price">Precio</label>
+                            <input type="number" step="0.01" min="0" id="price" name="price"
+                                value="<%= product.price || '' %>"
+                                class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:ring-sky-300"
+                                required>
+                        </div>
+
+                        <!-- Imagen -->
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1" for="image">URL de Imagen</label>
+                            <input type="text" id="image" name="image" value="<%= product.image || '' %>"
+                                class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:ring-sky-300">
+                            <% if (product.image) { %>
+                                <img src="<%= product.image %>" alt="Imagen actual"
+                                    class="mt-2 w-48 h-48 object-cover rounded shadow">
+                                <% } %>
+                        </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-4">
+                            <label class="block font-semibold mb-1" for="category">Categoría</label>
+                            <select id="category" name="category"
+                                class="w-full border px-3 py-2 rounded focus:outline-none focus:ring focus:ring-sky-300"
+                                required>
+                                <option value="">Seleccione una categoría</option>
+                                <% categorias.forEach(cat=> { %>
+                                    <option value="<%= cat.name %>" <%=cat.name===product.category ? "selected" : "" %>>
+                                        <%= cat.name %>
+                                    </option>
+                                    <% }) %>
+                            </select>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="flex justify-between mt-6">
+                            <button type="submit" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">
+                                <%= product && product.productId ? "Actualizar Producto" : "Crear Producto" %>
+                            </button>
+
+                            <a href="/products/view"
+                                class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
+                                Cancelar
+                            </a>
+                        </div>
+
+                    </form>
+
+</div>
