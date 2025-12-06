@@ -16,23 +16,20 @@ import { requireRole } from '../middlewares/role.middleware.js';
 
 const router = express.Router();
 
-// 🔐 Middleware global: todas las rutas protegidas
 router.use(authMiddleware);
 router.use(requireAuth);
 router.use(requireRole('admin'));
 
-// ---------- RUTAS DE VISTAS ----------
-router.get('/view', renderUsers);               // Lista de usuarios
-router.get('/view/:id', renderUserView);        // Vista individual
-router.get('/create', renderCreateUser);       // Formulario creación
-router.post('/create', createUser);            // Crear usuario
-router.get('/edit/:id', renderEditUser);       // Formulario edición
-router.post('/edit/:id', updateUser);          // Editar usuario
-router.delete('/view/:id', deleteUser);        // DELETE vía AJAX desde la vista
+router.get('/view', renderUsers);
+router.get('/view/:id', renderUserView);
+router.get('/create', renderCreateUser);
+router.post('/create', createUser);
+router.get('/edit/:id', renderEditUser);
+router.post('/edit/:id', updateUser);
+router.delete('/view/:id', deleteUser);
 
-// ---------- RUTAS DE API JSON ----------
-router.get('/api', getUsers);                  // Listado JSON
-router.get('/api/:id', getUser);               // Usuario individual JSON
-router.delete('/api/:id', deleteUser);         // DELETE JSON (API)
+router.get('/api', getUsers);
+router.get('/api/:id', getUser);
+router.delete('/api/:id', deleteUser);
 
 export default router;

@@ -46,7 +46,6 @@ export default async (req, res, next) => {
     next();
 };
 
-
 export const requireAuth = (req, res, next) => {
     if (!req.user || !res.locals.user) {
         return res.redirect("/auth/login");

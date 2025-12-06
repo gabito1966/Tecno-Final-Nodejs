@@ -2,7 +2,7 @@ import "dotenv/config";
 import admin from "firebase-admin";
 import fs from "fs";
 
-// Inicializar Firebase Admin
+
 admin.initializeApp({
     credential: admin.credential.cert({
         type: process.env.TYPE,
@@ -25,14 +25,12 @@ async function main() {
 
     for (const user of users) {
         try {
-            // Crear usuario en Firebase Auth
             const userRecord = await admin.auth().createUser({
                 email: user.email,
-                password: user.password || "123456", // contraseña por defecto si no existe
+                password: user.password || "123456",
                 displayName: user.name,
             });
 
-            // Actualizar UID en Firestore si quieres que coincida
             await db.collection("users").doc(userRecord.uid).set(
                 {
                     name: user.name,

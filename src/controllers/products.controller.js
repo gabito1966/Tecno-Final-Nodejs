@@ -1,238 +1,109 @@
-import { db } from "../config/firebase.js";
-import { categoryService } from "../services/category.service.js";
+import * as productService from "../services/product.service.js";
 
-// Listado con paginación y filtros
 export const renderProducts = async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1;
-        const limit = 16;
-        const search = req.query.search || "";
-        const categoryFilter = req.query.category || "";
-
-        const categorias = await categoryService.listcategory();
-        let query = db.collection("products").orderBy("createdAt", "desc");
-
-        if (categoryFilter) query = query.where("category", "==", categoryFilter);
-
-        const snapshot = await query.get();
-
-        let products = snapshot.docs.map(doc => ({
-            firebaseId: doc.id,
-            ...doc.data()
-        }));
-
-        if (search) {
-            const s = search.toLowerCase();
-            products = products.filter(product =>
-                product.name.toLowerCase().includes(s)
-            );
-        }
-
-        const total = products.length;
-        const paginated = products.slice((page - 1) * limit, page * limit);
-        const totalPages = Math.ceil(total / limit);
-
-        res.render("products/list", {
-            products: paginated,
-            categorias,
-            search,
-            category: categoryFilter,
-            currentPage: page,
-            totalPages,
-            user: res.locals.user
-        });
-
-    } catch (err) {
-        res.status(500).send("Error al cargar productos: " + err.message);
+        const { products } = await productService.listProducts();
+        res.render("products/view", { products });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al cargar la lista de productos");
     }
 };
 
-// FUNCION REUTILIZABLE para renderizar el formulario
-const renderProductForm = async (req, res, product = {}, error = null, success = null) => {
-    const categorias = await categoryService.listcategory();
-    res.render("products/form", {
-        categorias,
-        product,
-        error,
-        success,
-        user: res.locals.user
-    });
+export const renderProductView = async (req, res) => {
+    try {
+        const product = await productService.findProduct(req.params.id);
+        if (!product) return res.status(404).send("Producto no encontrado");
+
+        res.render("products/viewOne", { product });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al cargar el producto");
+    }
 };
 
-// Mostrar formulario de creación
-export const renderCreateForm = (req, res) => renderProductForm(req, res);
+export const renderCreateForm = (req, res) => {
+    res.render("products/create");
+};
 
-// Crear producto
 export const createProduct = async (req, res) => {
     try {
-        const { name, description, price, image, category } = req.body;
+        const newProduct = {
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.body.image || "",
+            category: req.body.category || "Sin categoría"
+        };
 
-        const categoryRecord = await categoryService.findCategoryByName(category);
-        if (!categoryRecord)
-            return renderProductForm(req, res, req.body, "Categoría inválida");
-
-        // GENERAR ID AUTOMÁTICO
-        const last = await db.collection("products")
-            .orderBy("productId", "desc")
-            .limit(1)
-            .get();
-
-        let newId = 1;
-        if (!last.empty) {
-            newId = last.docs[0].data().productId + 1;
-        }
-
-        await db.collection("products").add({
-            productId: newId,
-            name,
-            description,
-            price: Number(price),
-            image: image || "",
-            category: categoryRecord.name,
-            createdAt: new Date()
-        });
-
-        renderProductForm(req, res, {}, null, "Producto creado correctamente");
-
-    } catch (err) {
-        renderProductForm(req, res, req.body, "Error al crear producto: " + err.message);
+        await productService.addProduct(newProduct);
+        res.redirect("/products/view");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Error al crear producto");
     }
 };
 
-// Renderizar formulario de edición
 export const renderEditForm = async (req, res) => {
-    const productId = parseInt(req.params.id);
     try {
-        const snapshot = await db.collection("products")
-            .where("productId", "==", productId)
-            .limit(1)
-            .get();
+        const product = await productService.findProduct(req.params.id);
+        if (!product) return res.status(404).send("Producto no encontrado");
 
-        if (snapshot.empty)
-            return res.render("404", { message: "Producto no encontrado" });
-
-        const doc = snapshot.docs[0];
-
-        return renderProductForm(req, res, {
-            firebaseId: doc.id,
-            ...doc.data()
-        });
-
+        res.render("products/edit", { product });
     } catch (error) {
-        console.error("❌ Error en renderEditForm:", error);
-        res.status(500).send("Error en el servidor");
+        console.error(error);
+        res.status(500).send("Error al cargar formulario de edición");
     }
 };
 
-// Editar producto
 export const editProduct = async (req, res) => {
-    const productId = parseInt(req.params.id);
     try {
-        const snapshot = await db.collection("products")
-            .where("productId", "==", productId)
-            .limit(1)
-            .get();
+        const updated = {
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.body.image,
+            category: req.body.category
+        };
 
-        if (snapshot.empty)
-            return res.status(404).json({ error: "Producto no encontrado" });
-
-        const firebaseId = snapshot.docs[0].id;
-
-        await db.collection("products")
-            .doc(firebaseId)
-            .update({
-                name: req.body.name,
-                description: req.body.description,
-                price: Number(req.body.price),
-                image: req.body.image,
-                category: req.body.category
-            });
-
-        res.redirect("/products/view/" + productId);
-
+        await productService.updateProduct(req.params.id, updated);
+        res.redirect("/products/view");
     } catch (error) {
-        console.error("❌ Error en editProduct:", error);
-        res.status(500).send("Error en el servidor");
+        console.error(error);
+        res.status(500).send("Error al actualizar producto");
     }
 };
 
-// Vista individual
-export const renderProductView = async (req, res) => {
-    const productId = parseInt(req.params.id);
+export const deleteProduct = async (req, res) => {
     try {
-        const snapshot = await db.collection("products")
-            .where("productId", "==", productId)
-            .limit(1)
-            .get();
+        const ok = await productService.removeProduct(req.params.id);
+        if (!ok) return res.status(404).json({ message: "Producto no encontrado" });
 
-        if (snapshot.empty)
-            return res.status(404).send("Producto no encontrado");
-
-        const doc = snapshot.docs[0];
-
-        res.render("products/view", {
-            product: { firebaseId: doc.id, ...doc.data() },
-            user: res.locals.user
-        });
-
-    } catch (err) {
-        res.status(500).send("Error al ver producto: " + err.message);
+        res.status(200).json({ message: "Producto eliminado" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al eliminar producto" });
     }
 };
 
-// API
 export const getProducts = async (req, res) => {
     try {
-        const snapshot = await db.collection("products").get();
-        const products = snapshot.docs.map(doc => ({
-            firebaseId: doc.id,
-            ...doc.data()
-        }));
+        const { products } = await productService.listProducts();
         res.json(products);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al obtener productos" });
     }
 };
 
-// API detalle
 export const getProduct = async (req, res) => {
-    const productId = parseInt(req.params.id);
     try {
-        const snapshot = await db.collection("products")
-            .where("productId", "==", productId)
-            .limit(1)
-            .get();
+        const product = await productService.findProduct(req.params.id);
+        if (!product) return res.status(404).json({ message: "Producto no encontrado" });
 
-        if (snapshot.empty)
-            return res.status(404).json({ error: "No encontrado" });
-
-        const doc = snapshot.docs[0];
-        res.json({ firebaseId: doc.id, ...doc.data() });
-
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-};
-
-// Eliminar producto
-export const deleteProduct = async (req, res) => {
-    const productId = parseInt(req.params.id);
-    try {
-        const snapshot = await db.collection("products")
-            .where("productId", "==", productId)
-            .limit(1)
-            .get();
-
-        if (snapshot.empty)
-            return res.status(404).json({ error: "No encontrado" });
-
-        const firebaseId = snapshot.docs[0].id;
-
-        await db.collection("products").doc(firebaseId).delete();
-
-        res.redirect("/products/view");
-
-    } catch (err) {
-        res.status(500).json({ error: err.message });
+        res.json(product);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error al obtener producto" });
     }
 };

@@ -2,9 +2,6 @@ import jwt from "jsonwebtoken";
 import fetch from "node-fetch";
 import { auth, db } from "../config/firebase.js";
 
-// =======================
-// AUTH
-// =======================
 export const renderLogin = (req, res) => {
     res.render("auth/login", { error: null, success: null });
 };
@@ -16,21 +13,14 @@ export const renderRegister = (req, res) => {
 export const register = async (req, res) => {
     try {
         const { name, email, password } = req.body;
-
-        if (!name || !email || !password) {
+        if (!name || !email || !password)
             return res.render("auth/register", { error: "Todos los campos son obligatorios", success: null });
-        }
 
         const existingUser = await auth.getUserByEmail(email).catch(() => null);
-        if (existingUser) {
+        if (existingUser)
             return res.render("auth/register", { error: "El usuario ya existe", success: null });
-        }
 
-        const userRecord = await auth.createUser({
-            email,
-            password,
-            displayName: name
-        });
+        const userRecord = await auth.createUser({ email, password, displayName: name });
 
         await db.collection("users").doc(userRecord.uid).set({
             uid: userRecord.uid,
@@ -41,7 +31,6 @@ export const register = async (req, res) => {
         });
 
         return res.render("auth/login", { success: "Registro exitoso, ya puedes iniciar sesión", error: null });
-
     } catch (err) {
         console.error("Error en registro:", err);
         return res.render("auth/register", { error: "Error interno", success: null });
@@ -51,13 +40,10 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     try {
         const { email, password, role } = req.body;
-
-        if (!email || !password || !role) {
+        if (!email || !password || !role)
             return res.render("auth/login", { error: "Faltan datos", success: null });
-        }
 
         const apiKey = process.env.FIREBASE_API_KEY;
-
         const response = await fetch(
             `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`,
             {
@@ -68,10 +54,7 @@ export const login = async (req, res) => {
         );
 
         const data = await response.json();
-
-        if (data.error) {
-            return res.render("auth/login", { error: "Credenciales inválidas", success: null });
-        }
+        if (data.error) return res.render("auth/login", { error: "Credenciales inválidas", success: null });
 
         const userDoc = await db.collection("users").doc(data.localId).get();
         const userData = userDoc.exists ? userDoc.data() : { role: "user" };
@@ -83,9 +66,7 @@ export const login = async (req, res) => {
         );
 
         res.cookie("token", token, { httpOnly: true, secure: false, maxAge: 3600000 });
-
         return res.redirect("/products/view");
-
     } catch (err) {
         console.error("Error en login:", err);
         return res.render("auth/login", { error: "Error interno", success: null });
@@ -97,23 +78,34 @@ export const logout = (req, res) => {
     return res.redirect("/auth/login");
 };
 
-// =======================
-// USERS CRUD
-// =======================
+const renderUserForm = (req, res, user = {}, error = null, success = null) => {
+    res.render("users/form", { user, error, success });
+};
+
+export const renderCreateUser = (req, res) => {
+    res.render("users/form", { user: null, error: null });
+};
+
+export const renderEditUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const doc = await db.collection("users").doc(id).get();
+
+        if (!doc.exists) return res.render("users/form", { user: null, error: "Usuario no encontrado" });
+
+        return res.render("users/form", { user: { id: doc.id, ...doc.data() }, error: null });
+    } catch (err) {
+        console.error(err);
+        return res.render("users/form", { user: null, error: "Error al cargar usuario" });
+    }
+};
+
 export const createUser = async (req, res) => {
     try {
         const { name, email, password, role } = req.body;
+        if (!name || !email || !password) return renderUserForm(req, res, req.body, "Todos los campos son obligatorios");
 
-        if (!name || !email || !password) {
-            return res.render("users/create", { error: "Todos los campos son obligatorios" });
-        }
-
-        const userRecord = await auth.createUser({
-            email,
-            password,
-            displayName: name
-        });
-
+        const userRecord = await auth.createUser({ email, password, displayName: name });
         await db.collection("users").doc(userRecord.uid).set({
             uid: userRecord.uid,
             name,
@@ -122,39 +114,45 @@ export const createUser = async (req, res) => {
             createdAt: new Date()
         });
 
-        return res.redirect("/users/view");
-
+        renderUserForm(req, res, {}, null, "Usuario creado correctamente");
     } catch (err) {
         console.error(err);
-        return res.render("users/create", { error: "Error al crear usuario" });
+        renderUserForm(req, res, req.body, "Error al crear usuario");
+    }
+};
+
+export const updateUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, email, role } = req.body;
+
+        await db.collection("users").doc(id).update({ name, email, role });
+        await auth.updateUser(id, { email, displayName: name });
+
+        renderUserForm(req, res, { id, name, email, role }, null, "Usuario actualizado correctamente");
+    } catch (err) {
+        console.error(err);
+        renderUserForm(req, res, { id, ...req.body }, "Error al actualizar usuario");
     }
 };
 
 export const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
+        const doc = await db.collection("users").doc(id).get();
+        if (!doc.exists) return res.status(404).json({ error: "Usuario no encontrado" });
 
-        const userDoc = await db.collection("users").doc(id).get();
-        if (!userDoc.exists) return res.status(404).json({ error: "Usuario no encontrado" });
-
-        const userData = userDoc.data();
-
-        // Borra de Firebase Auth usando UID o id
+        const userData = doc.data();
         try {
             await auth.deleteUser(userData.uid || id);
-            console.log(`Usuario Auth eliminado: ${userData.uid || id}`);
         } catch (authErr) {
             console.warn("Error eliminando usuario de Firebase Auth:", authErr.code);
         }
 
-        // Borra de Firestore
         await db.collection("users").doc(id).delete();
-        console.log(`Usuario Firestore eliminado: ${id}`);
-
         return res.status(200).json({ message: "Usuario eliminado" });
-
     } catch (err) {
-        console.error("Error eliminando usuario:", err);
+        console.error(err);
         return res.status(500).json({ error: "Error al eliminar usuario" });
     }
 };
@@ -163,11 +161,8 @@ export const getUser = async (req, res) => {
     try {
         const { id } = req.params;
         const doc = await db.collection("users").doc(id).get();
-
         if (!doc.exists) return res.status(404).json({ error: "Usuario no encontrado" });
-
         return res.status(200).json({ id: doc.id, ...doc.data() });
-
     } catch (err) {
         console.error(err);
         return res.status(500).json({ error: "Error al obtener usuario" });
@@ -185,33 +180,9 @@ export const getUsers = async (req, res) => {
     }
 };
 
-export const updateUser = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { name, email, role } = req.body;
-
-        await db.collection("users").doc(id).update({ name, email, role });
-
-        await auth.updateUser(id, { email, displayName: name });
-
-        return res.redirect("/users/view");
-
-    } catch (err) {
-        console.error(err);
-        return res.render("users/edit", {
-            error: "Error al actualizar usuario",
-            user: { id, ...req.body }
-        });
-    }
-};
-
-// =======================
-// RENDER VIEWS
-// =======================
 export const renderUsers = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
-
     const search = req.query.search || '';
     const roleFilter = req.query.role || '';
 
@@ -219,43 +190,34 @@ export const renderUsers = async (req, res) => {
         const snapshot = await db.collection("users").orderBy("createdAt", "desc").get();
         let users = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-        if (roleFilter) {
-            users = users.filter(u => u.role === roleFilter);
-        }
-
+        if (roleFilter) users = users.filter(u => u.role === roleFilter);
         if (search) {
             const lower = search.toLowerCase();
             users = users.filter(u =>
-                u.name.toLowerCase().includes(lower) ||
-                u.email.toLowerCase().includes(lower)
+                u.name.toLowerCase().includes(lower) || u.email.toLowerCase().includes(lower)
             );
         }
 
-        const total = users.length;
-        const totalPages = Math.ceil(total / limit);
+        const totalPages = Math.ceil(users.length / limit);
         const paginatedUsers = users.slice((page - 1) * limit, page * limit);
-
-        const roles = ['admin', 'user', 'manager'];
 
         return res.render("users/list", {
             users: paginatedUsers,
-            roles,
+            roles: ['admin', 'user'],
             roleFilter,
             search,
             currentPage: page,
             totalPages,
             user: res.locals.user
         });
-
     } catch (err) {
-        console.error("Error renderUsers:", err);
-
+        console.error(err);
         return res.render("users/list", {
             users: [],
-            roles: ['admin', 'user', 'manager'],
+            roles: ['admin', 'user'],
             roleFilter,
             search,
-            currentPage: page,
+            currentPage: 1,
             totalPages: 1,
             error: "Error al cargar usuarios",
             user: res.locals.user
@@ -263,37 +225,14 @@ export const renderUsers = async (req, res) => {
     }
 };
 
-
 export const renderUserView = async (req, res) => {
     try {
         const { id } = req.params;
         const doc = await db.collection("users").doc(id).get();
-
         if (!doc.exists) return res.render("users/view", { user: null, error: "Usuario no encontrado" });
-
         return res.render("users/view", { user: { id: doc.id, ...doc.data() }, error: null });
-
     } catch (err) {
         console.error(err);
         return res.render("users/view", { user: null, error: "Error al cargar usuario" });
-    }
-};
-
-export const renderCreateUser = (req, res) => {
-    res.render("users/create", { error: null });
-};
-
-export const renderEditUser = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const doc = await db.collection("users").doc(id).get();
-
-        if (!doc.exists) return res.render("users/edit", { user: null, error: "Usuario no encontrado" });
-
-        return res.render("users/edit", { user: { id: doc.id, ...doc.data() }, error: null });
-
-    } catch (err) {
-        console.error(err);
-        return res.render("users/edit", { user: null, error: "Error al cargar usuario" });
     }
 };

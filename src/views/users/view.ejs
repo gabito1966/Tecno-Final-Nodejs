@@ -1,46 +1,58 @@
-<div class="max-w-2xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
+<div class="max-w-4xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
+    <h1 class="text-2xl font-bold mb-4">Detalle de Usuario</h1>
 
-    <h1 class="text-2xl font-bold mb-4">
-        Usuario: <%= user.name %>
-    </h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+            <p class="text-gray-600 font-semibold">Nombre:</p>
+            <p class="mb-2">
+                <%= user.name %>
+            </p>
 
-    <p><strong>ID:</strong>
-        <%= user.id %>
-    </p>
+            <p class="text-gray-600 font-semibold">Email:</p>
+            <p class="mb-2">
+                <%= user.email %>
+            </p>
 
-    <p><strong>Nombre:</strong>
-        <%= user.name %>
-    </p>
+            <p class="text-gray-600 font-semibold">Rol:</p>
+            <p class="mb-2 capitalize">
+                <%= user.role %>
+            </p>
+        </div>
 
-    <p><strong>Email:</strong>
-        <%= user.email %>
-    </p>
+        <div>
+            <p class="text-gray-600 font-semibold">Creado:</p>
+            <p class="mb-2">
+                <% if (user.createdAt) { %>
+                    <%= new Date(user.createdAt.toDate ? user.createdAt.toDate() : user.createdAt).toLocaleDateString()
+                        %>
+                        <% } else { %>
+                            -
+                            <% } %>
+            </p>
 
-    <p><strong>Rol:</strong>
-        <%= user.role %>
-    </p>
+            <p class="text-gray-600 font-semibold">Actualizado:</p>
+            <p class="mb-2">
+                <% if (user.updatedAt) { %>
+                    <%= new Date(user.updatedAt.toDate ? user.updatedAt.toDate() : user.updatedAt).toLocaleDateString()
+                        %>
+                        <% } else { %>
+                            -
+                            <% } %>
+            </p>
+        </div>
+    </div>
 
-    <p><strong>Fecha de creación:</strong>
-        <% if (user.createdAt) { %>
-            <%= new Date( user.createdAt.toDate ? user.createdAt.toDate() : user.createdAt ).toLocaleDateString() %>
-                <% } else { %>
-                    -
-                    <% } %>
-    </p>
-
-    <div class="mt-6 flex gap-4">
-        <a href="/users/edit/<%= user.id %>" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
+    <div class="flex justify-end mt-6 space-x-2">
+        <a href="/users/edit/<%= user.id %>" class="px-4 py-2 bg-sky-600 text-white rounded hover:bg-sky-700">
             Editar
         </a>
-
         <form action="/users/<%= user.id %>?_method=DELETE" method="POST"
             onsubmit="return confirm('¿Eliminar usuario?')">
-            <button class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
+            <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
                 Eliminar
             </button>
         </form>
-
-        <a href="/users/view" class="px-4 py-2 bg-gray-500 hover:bg-gray-700 text-white rounded-lg">
+        <a href="/users/view" class="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400">
             Volver
         </a>
     </div>

@@ -24,7 +24,7 @@ async function main() {
 
     for (const u of users) {
         try {
-            const uid = String(u.id); // ← Asegura string siempre
+            const uid = String(u.id);
 
             let userRecord;
             try {

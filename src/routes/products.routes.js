@@ -1,35 +1,18 @@
-import express from "express";
-import {
-   createProduct,
-   deleteProduct,
-   editProduct,
-   getProduct,
-   getProducts,
-   renderCreateForm,
-   renderEditForm,
-   renderProducts,
-   renderProductView
-} from "../controllers/products.controller.js";
+import { Router } from "express";
+import * as productController from "../controllers/products.controller.js";
+import { requireAuth } from "../middlewares/auth.middleware.js";
 
-const router = express.Router();
+const router = Router();
 
-// Listado y vista por productId
-router.get("/view", renderProducts);
-router.get("/view/:id", renderProductView);
+router.get("/view", requireAuth, productController.renderProducts);
+router.get("/view/:id", requireAuth, productController.renderProductView);
+router.get("/create", requireAuth, productController.renderCreateForm);
+router.post("/create", requireAuth, productController.createProduct);
+router.get("/edit/:id", requireAuth, productController.renderEditForm);
+router.post("/edit/:id", requireAuth, productController.editProduct);
 
-// Crear
-router.get("/create", renderCreateForm);
-router.post("/create", createProduct);
-
-// Editar (usa productId)
-router.get("/edit/:id", renderEditForm);
-router.post("/edit/:id", editProduct);
-
-// Eliminar por productId
-router.delete("/delete/:id", deleteProduct);
-
-// API
-router.get("/api", getProducts);
-router.get("/api/:id", getProduct);
+router.delete("/delete/:id", requireAuth, productController.deleteProduct);
+router.get("/", requireAuth, productController.getProducts);
+router.get("/:id", requireAuth, productController.getProduct);
 
 export default router;

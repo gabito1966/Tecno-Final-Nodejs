@@ -4,7 +4,6 @@ const db = admin.firestore();
 const auth = admin.auth();
 
 export const userService = {
-    // Obtener todos los usuarios
     getAllUsers: async () => {
         try {
             const snapshot = await db.collection("users").get();
@@ -16,7 +15,6 @@ export const userService = {
         }
     },
 
-    // Obtener usuario por ID
     getUserById: async (id) => {
         try {
             const doc = await db.collection("users").doc(id).get();
@@ -27,8 +25,6 @@ export const userService = {
             return { success: false, error: "Error al obtener el usuario" };
         }
     },
-
-    // Crear usuario (Auth + Firestore)
     createUser: async (data) => {
         try {
             const userRecord = await auth.createUser({
@@ -53,7 +49,6 @@ export const userService = {
         }
     },
 
-    // Actualizar usuario
     updateUser: async (id, data) => {
         try {
             const updateAuth = {};
@@ -94,7 +89,6 @@ export const userService = {
         }
     },
 
-    // Eliminar usuario
     deleteUser: async (id) => {
         try {
             await auth.deleteUser(id);

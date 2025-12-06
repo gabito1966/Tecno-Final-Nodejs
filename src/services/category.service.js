@@ -2,7 +2,7 @@ import { db } from "../config/firebase.js";
 
 export const listcategory = async () => {
     try {
-        const snapshot = await db.collection("category").get();
+        const snapshot = await db.collection("categories").get();
         return snapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
@@ -14,7 +14,7 @@ export const listcategory = async () => {
 
 export const findCategory = async (id) => {
     try {
-        const doc = await db.collection("category").doc(id).get();
+        const doc = await db.collection("categories").doc(id).get();
         if (!doc.exists) return null;
         return { id: doc.id, ...doc.data() };
     } catch (err) {
@@ -22,11 +22,10 @@ export const findCategory = async (id) => {
     }
 };
 
-// ⭐ Esta es la función que te falta
 export const findCategoryByName = async (name) => {
     try {
         const snapshot = await db
-            .collection("category")
+            .collection("categories")
             .where("name", "==", name)
             .limit(1)
             .get();
@@ -39,7 +38,6 @@ export const findCategoryByName = async (name) => {
         throw new Error("Error al buscar categoría por nombre: " + err.message);
     }
 };
-
 
 export const categoryService = {
     listcategory,
