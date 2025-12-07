@@ -1,9 +1,29 @@
-import * as productService from "../services/product.service.js";
+import * as productService from "../services/products.service.js";
+
+
+const caegories =
+    [
+        {
+            "name": "computadoras"
+        },
+        {
+            "name": "perifericos"
+        },
+        {
+            "name": "electronicos"
+        },
+        {
+            "name": "impresoras"
+        },
+        {
+            "name": "hardware"
+        }
+    ]
 
 export const renderProducts = async (req, res) => {
     try {
         const { products } = await productService.listProducts();
-        res.render("products/view", { products });
+        res.render("products/list", { products });
     } catch (error) {
         console.error(error);
         res.status(500).send("Error al cargar la lista de productos");
@@ -15,7 +35,7 @@ export const renderProductView = async (req, res) => {
         const product = await productService.findProduct(req.params.id);
         if (!product) return res.status(404).send("Producto no encontrado");
 
-        res.render("products/viewOne", { product });
+        res.render("products/view", { product });
     } catch (error) {
         console.error(error);
         res.status(500).send("Error al cargar el producto");
@@ -23,7 +43,7 @@ export const renderProductView = async (req, res) => {
 };
 
 export const renderCreateForm = (req, res) => {
-    res.render("products/create");
+    res.render("products/form", { product: null, categories });
 };
 
 export const createProduct = async (req, res) => {
@@ -49,7 +69,7 @@ export const renderEditForm = async (req, res) => {
         const product = await productService.findProduct(req.params.id);
         if (!product) return res.status(404).send("Producto no encontrado");
 
-        res.render("products/edit", { product });
+        res.render("products/form", { product, categories });
     } catch (error) {
         console.error(error);
         res.status(500).send("Error al cargar formulario de edición");

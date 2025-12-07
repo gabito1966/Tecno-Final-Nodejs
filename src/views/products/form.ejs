@@ -1,7 +1,7 @@
 <div class="max-w-2xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
 
     <h1 class="text-2xl font-bold mb-6">
-        <%= product && product.productId ? 'Editar Producto' : 'Crear Producto' %>
+        <%= product && product.id ? 'Editar Producto' : 'Crear Producto' %>
     </h1>
 
     <% if (error) { %>
@@ -15,8 +15,7 @@
                 </div>
                 <% } %>
 
-                    <form
-                        action="<%= product && product.productId ? '/products/edit/' + product.productId : '/products/create' %>"
+                    <form action="<%= product && product.id ? '/products/edit/' + product.id : '/products/create' %>"
                         method="POST" class="space-y-4">
 
                         <div>
@@ -58,14 +57,13 @@
 
                         <div class="flex gap-4 mt-6">
                             <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg">
-                                <%= product && product.productId ? 'Guardar cambios' : 'Crear Producto' %>
+                                <%= product && product.id ? 'Guardar cambios' : 'Crear Producto' %>
                             </button>
 
-                            <a href="<%= product && product.productId ? '/products/view/' + product.productId : '/products/view' %>"
+                            <a href="<%= product && product.id ? '/products/view/' + product.id : '/products/view' %>"
                                 class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg">
                                 Cancelar
                             </a>
                         </div>
-
                     </form>
 </div>

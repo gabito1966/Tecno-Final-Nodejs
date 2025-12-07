@@ -4,7 +4,7 @@ import { Product } from "../models/product.model.js";
 export const listProducts = async () => {
     try {
         const snapshot = await db.collection("products")
-            .orderBy("createdAt", "desc")
+            .orderBy("createdAt", "asc")
             .get();
         const products = snapshot.docs.map(doc => {
             const d = doc.data();

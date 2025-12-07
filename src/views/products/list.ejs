@@ -4,19 +4,17 @@
         Crear producto
     </a>
 </div>
-
-<!-- GRID DE PRODUCTOS -->
 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <% products.forEach(product=> { %>
         <div class="bg-white shadow rounded overflow-hidden flex flex-col h-full relative">
-            <div class="overflow-hidden">
-                <img src="<%= product.image || '/placeholder.png' %>" class="w-full h-48 object-cover">
+            <div class="overflow-hidden w-full aspect-square">
+                <img src="<%= product.image || '/placeholder.png' %>" class="w-full h-full object-cover">
             </div>
             <div class="p-4 flex-1">
                 <h2 class="text-xl font-bold mb-2">
                     <%= product.name %>
                 </h2>
-                <p class="text-gray-600 mb-2">ID: <%= product.productId %>
+                <p class="text-gray-600 mb-2">ID: <%= product.id %>
                 </p>
                 <p class="text-gray-600 mb-2">
                     <%= product.description %>
@@ -28,11 +26,11 @@
                     </strong></p>
             </div>
             <div class="flex justify-between px-6 mb-4">
-                <a href="/products/view/<%= product.productId %>"
+                <a href="/products/view/<%= product.id %>"
                     class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white rounded-lg">Ver</a>
-                <a href="/products/edit/<%= product.productId %>"
+                <a href="/products/edit/<%= product.id %>"
                     class="px-4 py-2 bg-teal-600 hover:bg-teal-800 text-white rounded-lg">Editar</a>
-                <form action="/products/delete/<%= product.productId %>?_method=DELETE" method="POST"
+                <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST"
                     onsubmit="return confirm('¿Eliminar producto?')">
                     <button class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg">Eliminar</button>
                 </form>

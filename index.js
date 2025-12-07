@@ -7,7 +7,6 @@ import methodOverride from 'method-override';
 import path from 'path';
 
 import authRoutes from './src/routes/auth.routes.js';
-import { categoriesRoutes } from './src/routes/categories.routes.js';
 import productRoutes from './src/routes/products.routes.js';
 import userRoutes from './src/routes/users.routes.js';
 
@@ -49,6 +48,5 @@ app.get('/', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/products', requireAuth, productRoutes);
 app.use('/users', requireAuth, userRoutes);
-app.use("/categories", categoriesRoutes);
 
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));

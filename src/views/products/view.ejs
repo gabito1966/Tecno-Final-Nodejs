@@ -1,12 +1,9 @@
 <div class="max-w-4xl mx-auto mt-10 bg-white shadow rounded-xl p-6">
-
-    <!-- Imagen -->
-    <div class="overflow-hidden mb-6">
-        <img src="<%= product.image || '/placeholder.png' %>" alt="<%= product.name %>"
-            class="w-full h-96 object-cover rounded">
+    <div class="overflow-hidden mb-6 w-full aspect-square rounded">
+        <img src="<%= product ? product.image : '/placeholder.png' %>" alt="<%= product ? product.name : '' %>"
+            class="w-full h-full object-cover rounded">
     </div>
 
-    <!-- Información del producto -->
     <div class="mb-6">
         <h1 class="text-3xl font-bold mb-3">
             <%= product.name %>
@@ -21,21 +18,15 @@
                 <%= product.category || 'Sin categoría' %>
             </strong>
         </p>
-        <p class="text-gray-500 mb-2">
-            ID: <strong>
-                <%= product.productId %>
-            </strong>
-        </p>
     </div>
 
-    <!-- Acciones -->
     <div class="flex flex-wrap gap-4">
-        <a href="/products/edit/<%= product.productId %>"
+        <a href="/products/edit/<%= product.id %>"
             class="px-4 py-2 bg-teal-600 hover:bg-teal-800 text-white rounded-lg">
             Editar
         </a>
 
-        <form action="/products/delete/<%= product.productId %>?_method=DELETE" method="POST"
+        <form action="/products/delete/<%= product.id %>?_method=DELETE" method="POST"
             onsubmit="return confirm('¿Eliminar producto?')">
             <button class="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-lg">
                 Eliminar
