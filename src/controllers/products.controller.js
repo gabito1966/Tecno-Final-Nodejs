@@ -1,21 +1,26 @@
 import * as productService from "../services/products.service.js";
 
 
-const caegories =
+const categories =
     [
         {
+            "id": 1,
             "name": "computadoras"
         },
         {
+            "id": 2,
             "name": "perifericos"
         },
         {
+            "id": 3,
             "name": "electronicos"
         },
         {
+            "id": 4,
             "name": "impresoras"
         },
         {
+            "id": 5,
             "name": "hardware"
         }
     ]
